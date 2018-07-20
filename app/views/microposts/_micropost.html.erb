@@ -2,7 +2,7 @@
   <span class="content"><%= micropost.content %></span>
   <% if micropost.image? %>
   <div class="image">
-    <%= image_tag micropost.image.url %>
+    <%= image_tag micropost.image.url(:thumb) %>
   </div>
   <% end %>
   <span class="timestamp">
