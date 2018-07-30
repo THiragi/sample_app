@@ -12,4 +12,9 @@ class Micropost < ActiveRecord::Base
     where("user_id IN (#{followed_user_ids}) OR user_id = :user_id",
           user_id: user.id)
   end
+
+  def like_user(user_id)
+   likes.find_by(user_id: user_id)
+  end
+
 end
