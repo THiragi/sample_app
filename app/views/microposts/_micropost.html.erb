@@ -13,4 +13,5 @@
                                      data: { confirm: "You sure?" },
                                      title: micropost.content %>
   <% end %>
+  <%= render partial: "likes/like", locals: { micropost: micropost, likes: @likes } %>
 </li>
