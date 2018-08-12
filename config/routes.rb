@@ -1,6 +1,4 @@
 SampleApp::Application.routes.draw do
-  get "likes/create"
-  get "likes/destroy"
   get "contacts/new"
   devise_for :users, :controllers => {
     :registrations => "registrations"
@@ -11,6 +9,9 @@ SampleApp::Application.routes.draw do
     end
   end
   resources :microposts do
+    member do
+      post :reply
+    end
     resources :likes, only: [:create, :destroy]
   end
   resources :relationships, only: [:create, :destroy]
