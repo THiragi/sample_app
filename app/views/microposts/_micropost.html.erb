@@ -15,18 +15,15 @@
   <% end %>
   <div class="options">
   <%= render partial: "likes/like", locals: { micropost: micropost, likes: @likes } %>
-  
-  
-  
-  <!-- Reply Form (Rough) -->
+
   <p>
     Reply to <%= micropost.user.name %>
   </p>
-  <%= form_for(micropost, url: reply_micropost_path(micropost), method: :post) do |f| %>
-  <%= f.hidden_field :reply_id, :value => micropost.id %>
+  <%= form_for(micropost, url: microposts_path(micropost), method: :post) do |f| %>
+  <%= f.hidden_field :reply_id, :value => micropost.id %> 
   <%= f.text_area :content, placeholder: "Compose reply..." %>
   <%= f.submit "Reply", class: "btn btn-info" %>
-  <!-- end -->
+
   <% end %>
   </div>
   

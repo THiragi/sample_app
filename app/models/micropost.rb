@@ -1,6 +1,6 @@
 class Micropost < ActiveRecord::Base
   belongs_to :user
-  belongs_to :parent_posts, foreign_key: "reply_id", class_name: "Micropost"
+  belongs_to :parent, foreign_key: "reply_id", class_name: "Micropost"
   has_many :replies, foreign_key: "reply_id", class_name: "Micropost", dependent: :destroy
   has_many :likes, dependent: :destroy #多数のLikeを持つ
   default_scope -> { order('created_at DESC') }
