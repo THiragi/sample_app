@@ -1,32 +1,73 @@
 <li>
-  <span class="content"><%= micropost.content %></span>
-  <% if micropost.image? %>
-  <div class="image">
-    <%= image_tag micropost.image.url(:thumb) %>
+  <%= javascript_include_tag "application" %>
+  <div class="post-left">
+    <%= link_to gravatar_for(micropost.user), micropost.user %>
   </div>
-  <% end %>
-  <span class="timestamp">
-    Posted <%= time_ago_in_words(micropost.created_at) %> ago.
-  </span>
-  <% if current_user == micropost.user %>
-    <%= link_to "delete", micropost, method: :delete,
-                                     data: { confirm: "You sure?" },
-                                     title: micropost.content %>
-  <% end %>
-  <div class="options">
-  <%= render partial: "likes/like", locals: { micropost: micropost, likes: @likes } %>
 
-  <p>
-    Reply to <%= micropost.user.name %>
-  </p>
-  <%= form_for(micropost, url: microposts_path(micropost), method: :post) do |f| %>
-  <%= f.hidden_field :reply_id, :value => micropost.id %> 
-  <%= f.text_area :content, placeholder: "Compose reply..." %>
-  <%= f.submit "Reply", class: "btn btn-info" %>
+  <div class="post-right">
+    <span class="user">
+      <%= link_to micropost.user.name, micropost.user %>
+    </span>
+  
+    <% if micropost.reply_id? %>
+      <div class="reply_to">
+        Reply to: <%= link_to micropost.parent.user.name %>
+      </div>
+    <% end %>
+    <span class="content"><%= micropost.content %></span>
+    <% if micropost.image? %>
+      <div class="image">
+        <%= image_tag micropost.image.url(:thumb) %>
+      </div>
+    <% end %>
+    <span class="timestamp">
+      Posted <%= time_ago_in_words(micropost.created_at) %> ago.
+    </span>
+    <% if current_user == micropost.user %>
+      <%= link_to "delete", micropost, method: :delete,
+                                       data: { confirm: "You sure?" },
+                                       title: micropost.content %>
+    <% end %>
 
-  <% end %>
+    <div class="options">
+      <button type="button" id="reply_button" class="btn btn-xs btn-info" >
+        Reply
+      </button>
+      <span>
+        <% if current_user != micropost.user %>
+          <%= render partial: "likes/like", locals: { micropost: micropost, likes: @likes } %>
+        <% end %>
+      </span>
+    </div>
+    
+    <div class="reply_form<%= micropost.id %>" style="display: none;" >
+      <%= form_for(micropost, url: microposts_path(micropost), method: :post) do |f| %>
+      <p>
+        Reply to <%= micropost.user.name %>
+      </p>
+      <%= f.hidden_field :reply_id, :value => micropost.id %> 
+      <%= f.text_area :content, placeholder: "Compose reply..." %>
+      <%= f.submit "Post", class: "btn btn-primary" %>
+    
+      <% end %>
+    </div>
+    
+    
+    <% if micropost.replies.any? %>
+      <ol class="microposts">
+        <%= render micropost.replies %>
+      </ol>
+    <% end %>
+    
+    <script>
+      $(function(){
+      	$('#reply_button').on('click', function(){
+      		$('.reply_form<%= micropost.id %>').toggle();
+      	});
+      });
+    </script>
+    
+    
+      
   </div>
-  
-  
-  
 </li>

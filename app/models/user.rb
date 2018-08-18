@@ -1,5 +1,6 @@
 class User < ActiveRecord::Base
   has_many :microposts, dependent: :destroy
+  has_many :replies, foreign_key: "reply_id", class_name: "Micropost", dependent: :destroy
   has_many :relationships, foreign_key: "follower_id", dependent: :destroy
   has_many :followed_users, through: :relationships, source: :followed
   # Include default devise modules. Others available are:

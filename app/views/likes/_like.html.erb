@@ -10,7 +10,5 @@
 
 <%= button_to path, method: method, class: cls  do %> 
   <%= content_tag(:span, "Like") %>
-  <span>
     <%= micropost.likes.count %>
-  </span>
 <% end %>

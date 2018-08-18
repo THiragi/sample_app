@@ -20,4 +20,14 @@ class Micropost < ActiveRecord::Base
     likes.find_by(user_id: user_id)
   end
 
+  def post_type
+    if reply_id? && content?
+      "reply"
+    elsif reply_id?
+      "repost"
+    else
+      "micropost"
+    end
+  end
+
 end

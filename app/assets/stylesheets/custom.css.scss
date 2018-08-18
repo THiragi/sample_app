@@ -233,10 +233,22 @@ input {
   li {
     padding: 10px 0;
     border-top: 1px solid #e8e8e8;
+/*
+    display: flex; 
+*/
   }
 }
-.content {
+/*
+.post-left {
   display: block;
+}
+.post-right {
+  display: block;
+  width: 650px; 
+}
+*/
+.content {
+  display: block; 
 }
 .timestamp {
   color: $gray-light;
@@ -244,6 +256,18 @@ input {
 .gravatar {
   float: left;
   margin-right: 10px;
+  display: block;
+}
+.options {
+  input {
+    margin-right: 10px;
+  }
+  span {
+    display: inline-block;
+  }
+}
+.reply_to {
+  color: $gray-light;
 }
 aside {
   textarea {
