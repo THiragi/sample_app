@@ -10,11 +10,11 @@ class LikesController < ApplicationController
     user = like.micropost.user
     redirect_to user
 
-    respond_to do |format|
-    format.html
-    format.js
+    #respond_to do |format|
+    #format.html
+    #format.js
       
-    end
+    #end
     
   end
 
@@ -29,11 +29,11 @@ class LikesController < ApplicationController
     like.destroy
     redirect_to user
     
-    respond_to do |format|
-    format.html
-    format.js
+    #respond_to do |format|
+    #format.html
+    #format.js
       
-    end
+    #end
 
   end
 
