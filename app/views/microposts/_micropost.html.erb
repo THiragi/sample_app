@@ -31,13 +31,14 @@
 
     <div class="options">
       <button type="button" class="btn btn-xs btn-info reply_button" data-id="<%= micropost.id %>" >
-        Reply
+        Reply <%= micropost.replies.count %>
       </button>
-      <span id="likes_buttons_<%= micropost.id %>">
-        <% if current_user != micropost.user %>
+      
+      <% if current_user != micropost.user %>
+        <span id="likes_buttons_<%= micropost.id %>">
           <%= render partial: "likes/like", locals: { micropost: micropost, likes: @likes } %>
-        <% end %>
-      </span>
+        </span>
+      <% end %>
     </div>
     
     <div id="reply_form<%= micropost.id %>" class="reply_form" style="display: none;" >

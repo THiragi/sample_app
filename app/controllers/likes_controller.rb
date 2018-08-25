@@ -7,15 +7,9 @@ class LikesController < ApplicationController
     #redirect_to micropost.user
     
     like = Like.create(user_id: current_user.id, micropost_id: params[:micropost_id])
-    user = like.micropost.user
-    redirect_to user
+    #user = like.micropost.user
+    #redirect_to user
 
-    #respond_to do |format|
-    #format.html
-    #format.js
-      
-    #end
-    
   end
 
   #指定のMicropostに現在のUserのuser_idで作られたLikeを探し、削除する。
@@ -25,15 +19,9 @@ class LikesController < ApplicationController
     #redirect_to micropost.user
     
     like = Like.find_by(user_id: current_user.id, micropost_id: params[:micropost_id])
-    user = like.micropost.user
+    #user = like.micropost.user
     like.destroy
-    redirect_to user
-    
-    #respond_to do |format|
-    #format.html
-    #format.js
-      
-    #end
+    #redirect_to user
 
   end
 
