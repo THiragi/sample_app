@@ -1,5 +1,5 @@
 <li>
-  <%= javascript_include_tag "application" %>
+
   <div class="post-left">
     <%= link_to gravatar_for(micropost.user), micropost.user %>
   </div>
@@ -30,23 +30,23 @@
     <% end %>
 
     <div class="options">
-      <button type="button" id="reply_button" class="btn btn-xs btn-info" >
+      <button type="button" class="btn btn-xs btn-info reply_button" data-id="<%= micropost.id %>" >
         Reply
       </button>
-      <span>
+      <span id="likes_buttons_<%= micropost.id %>">
         <% if current_user != micropost.user %>
           <%= render partial: "likes/like", locals: { micropost: micropost, likes: @likes } %>
         <% end %>
       </span>
     </div>
     
-    <div class="reply_form<%= micropost.id %>" style="display: none;" >
+    <div id="reply_form<%= micropost.id %>" class="reply_form" style="display: none;" >
       <%= form_for(micropost, url: microposts_path(micropost), method: :post) do |f| %>
       <p>
         Reply to <%= micropost.user.name %>
       </p>
-      <%= f.hidden_field :reply_id, :value => micropost.id %> 
-      <%= f.text_area :content, placeholder: "Compose reply..." %>
+      <%= f.hidden_field :reply_id, value: micropost.id %> 
+      <%= f.text_area :content, value: nil, placeholder: "Compose reply..." %>
       <%= f.submit "Post", class: "btn btn-primary" %>
     
       <% end %>
@@ -59,13 +59,6 @@
       </ol>
     <% end %>
     
-    <script>
-      $(function(){
-      	$('#reply_button').on('click', function(){
-      		$('.reply_form<%= micropost.id %>').toggle();
-      	});
-      });
-    </script>
     
     
       

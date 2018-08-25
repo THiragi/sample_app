@@ -12,7 +12,7 @@ class User < ActiveRecord::Base
   has_many :likes, dependent: :destroy
 
   def feed
-    Micropost.from_users_followed_by(self)
+    Micropost.from_users_followed_by(self).where(reply_id: nil)
   end
   
   def following?(other_user)
