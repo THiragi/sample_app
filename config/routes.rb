@@ -9,10 +9,10 @@ SampleApp::Application.routes.draw do
     end
   end
   resources :microposts do
+    resources :likes, only: [:create, :destroy]
     member do
       post :reply
     end
-    resources :likes, only: [:create, :destroy]
   end
   resources :relationships, only: [:create, :destroy]
   resources :contacts, only: [:new, :create]

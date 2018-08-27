@@ -1,9 +1,9 @@
 <% if micropost.like_user(current_user.id) %>
-  <% path = micropost_like_path(likes, micropost_id: micropost.id) %>
+  <% path = micropost_like_path(likes, micropost_id: micropost.id, id: micropost.likes[0].id) %>
   <% method = :delete %>
   <% cls = "btn btn-xs btn-success" %>
 <% else %>
-  <% path = micropost_likes_path(micropost) %>
+  <% path = micropost_likes_path(micropost.id) %>
   <% method = :post %>
   <% cls = "btn btn-xs btn-default" %>
 <% end %>
