@@ -3,12 +3,12 @@
   <% method = :delete %>
   <% cls = "btn btn-xs btn-success" %>
 <% else %>
-  <% path = micropost_likes_path(micropost.id) %>
+  <% path = micropost_likes_path(micropost) %>
   <% method = :post %>
   <% cls = "btn btn-xs btn-default" %>
 <% end %>
 
-<%= button_to path, method: method, remote: true, class: cls do %> 
+<%= button_to path, method: method, class: cls, remote: true do %> 
   <%= content_tag(:span, "Like") %>
     <%= micropost.likes.count %>
 <% end %>
