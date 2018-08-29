@@ -30,7 +30,9 @@
     <% end %>
 
     <div class="options">
-      <button type="button" class="btn btn-xs btn-info reply_button" data-id="<%= micropost.id %>" >
+      <button type="button" class="btn btn-xs btn-default reply_button
+                              <%= "btn btn-xs btn-info reply_button" if micropost.replies.any? %>" 
+                          data-id="<%= micropost.id %>" >
         Reply <%= micropost.replies.count %>
       </button>
       
