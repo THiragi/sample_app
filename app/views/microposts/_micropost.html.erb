@@ -14,7 +14,7 @@
         Reply to: <%= link_to micropost.parent.user.name %>
       </div>
     <% end %>
-    <span class="content"><%= micropost.content %></span>
+    <div class="content"><%= micropost.content %></div>
     <% if micropost.image? %>
       <div class="image">
         <%= image_tag micropost.image.url(:thumb) %>
@@ -30,9 +30,9 @@
     <% end %>
 
     <div class="options">
-      <button type="button" class="btn btn-xs btn-default reply_button
-                              <%= "btn btn-xs btn-info reply_button" if micropost.replies.any? %>" 
-                          data-id="<%= micropost.id %>" >
+      <button type="button" class="btn btn-xs btn-default reply_button 
+                            <%= "btn-info" if micropost.replies.any? %>" 
+                            data-id="<%= micropost.id %>" >
         Reply <%= micropost.replies.count %>
       </button>
       
