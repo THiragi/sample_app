@@ -11,7 +11,11 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
+<<<<<<< HEAD
 ActiveRecord::Schema.define(version: 20180811235513) do
+=======
+ActiveRecord::Schema.define(version: 20180728112533) do
+>>>>>>> fadc696f32cda1e86a6f898a0632e706fc0138bc
 
   create_table "contacts", force: true do |t|
     t.string   "name"
@@ -39,7 +43,11 @@ ActiveRecord::Schema.define(version: 20180811235513) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.string   "image"
+<<<<<<< HEAD
     t.integer  "reply_id"
+=======
+    t.integer  "likes_count"
+>>>>>>> fadc696f32cda1e86a6f898a0632e706fc0138bc
   end
 
   add_index "microposts", ["user_id", "created_at"], name: "index_microposts_on_user_id_and_created_at"

@@ -15,7 +15,11 @@ class UsersController < ApplicationController
   def show
     @user = User.find(params[:id])
     @microposts = @user.microposts.paginate(page: params[:page])
+<<<<<<< HEAD
     #@likes = Like.where(micropost_id: params[:micropost_id])
+=======
+    @likes = Like.where(micropost_id: params[:micropost_id])
+>>>>>>> fadc696f32cda1e86a6f898a0632e706fc0138bc
   end
   
   def following

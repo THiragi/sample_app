@@ -15,6 +15,7 @@ class Micropost < ActiveRecord::Base
           user_id: user.id)
   end
 
+<<<<<<< HEAD
   #MicropostがそのUserによってすでにLikeされているか判定
   def like_user(user_id)
     likes.find_by(user_id: user_id)
@@ -28,6 +29,10 @@ class Micropost < ActiveRecord::Base
     else
       "micropost"
     end
+=======
+  def like_user(user_id)
+   likes.find_by(user_id: user_id)
+>>>>>>> fadc696f32cda1e86a6f898a0632e706fc0138bc
   end
 
 end

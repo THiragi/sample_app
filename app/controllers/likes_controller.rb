@@ -1,5 +1,6 @@
 class LikesController < ApplicationController
   before_action :authenticate_user!
+<<<<<<< HEAD
 
   def create
     @micropost = Micropost.find params[:micropost_id]
@@ -35,4 +36,17 @@ class LikesController < ApplicationController
 
   end
 
+=======
+ 
+  def create
+    @like = Like.create(user_id: current_user.id, micropost_id: params[:micropost_id])
+    @likes = Like.where(micropost_id: params[:micropost_id])
+  end
+ 
+  def destroy
+    like = Like.find_by(user_id: current_user.id, micropost_id: params[:micropost_id])
+    like.destroy
+    @likes = Like.where(micropost_id: params[:micropost_id])
+  end
+>>>>>>> fadc696f32cda1e86a6f898a0632e706fc0138bc
 end

@@ -1,4 +1,8 @@
 <%= form_for(current_user.relationships.find_by(followed_id: @user.id),
+<<<<<<< HEAD
              html: { method: :delete }, remote: true) do |f| %>
+=======
+             html: { method: :delete }) do |f| %>
+>>>>>>> fadc696f32cda1e86a6f898a0632e706fc0138bc
   <%= f.submit "Unfollow", class: "btn btn-lg btn-default" %>
 <% end %>

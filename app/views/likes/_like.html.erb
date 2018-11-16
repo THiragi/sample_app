@@ -1,4 +1,5 @@
 <% if micropost.like_user(current_user.id) %>
+<<<<<<< HEAD
   <% path = micropost_like_path(micropost.likes.find_by(user_id: current_user.id), micropost_id: micropost.id) %>
   <% method = :delete %>
   <% cls = "btn btn-xs btn-success" %>
@@ -11,4 +12,19 @@
 <%= button_to path, method: method, class: cls, remote: true do %> 
   <%= content_tag(:span, "Like") %>
     <%= micropost.likes.count %>
+=======
+  <%= button_to micropost_like_path(likes, micropost_id: micropost.id), method: :delete, id: "like-button", remote: true do %> 
+      <%= content_tag :span, "Like" %>
+    <span>
+      <%= micropost.likes_count %>
+    </span>
+  <% end %>
+<% else %>
+  <%= button_to micropost_likes_path(micropost),id: "like-button", remote: true do %>  
+      <%= content_tag :span, "Like" %>
+    <span>
+      <%= micropost.likes_count %>
+    </span>
+  <% end %>
+>>>>>>> fadc696f32cda1e86a6f898a0632e706fc0138bc
 <% end %>

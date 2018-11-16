@@ -10,12 +10,17 @@ SampleApp::Application.routes.draw do
   end
   resources :microposts do
     resources :likes, only: [:create, :destroy]
+<<<<<<< HEAD
     member do
       post :reply
     end
+=======
+>>>>>>> fadc696f32cda1e86a6f898a0632e706fc0138bc
   end
   resources :relationships, only: [:create, :destroy]
   resources :contacts, only: [:new, :create]
+  
+  
   root  'static_pages#home'
   match '/help', to: 'static_pages#help', via: 'get'
   match '/about', to: 'static_pages#about', via: 'get'

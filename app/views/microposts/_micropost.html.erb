@@ -66,4 +66,18 @@
     
       
   </div>
+<<<<<<< HEAD
+=======
+  <% end %>
+  <span class="timestamp">
+    Posted <%= time_ago_in_words(micropost.created_at) %> ago.
+  </span>
+
+  <% if current_user == micropost.user %>
+    <%= link_to "delete", micropost, method: :delete,
+                                     data: { confirm: "You sure?" },
+                                     title: micropost.content %>
+  <% end %>
+  <%= render partial: 'likes/like', locals: { micropost: micropost, likes: @likes } %>
+>>>>>>> fadc696f32cda1e86a6f898a0632e706fc0138bc
 </li>

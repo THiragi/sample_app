@@ -1,1 +1,5 @@
+<<<<<<< HEAD
 $(".likes_buttons_<%= @micropost.id %>").html("<%= escape_javascript(render "likes/like", micropost: @micropost) %>");
+=======
+$("#like-buttons").html("<%= j(render partial: 'like', locals: { micropost: micropost, likes: @likes }) %>");
+>>>>>>> fadc696f32cda1e86a6f898a0632e706fc0138bc
